@@ -20,6 +20,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 public class MembershipController {
 
     @SuppressWarnings("unused")
@@ -35,7 +37,7 @@ public class MembershipController {
 
         @PostMapping(path = "/tradesman/create", consumes = MediaType.APPLICATION_JSON_VALUE)
         public ResponseEntity<Void> create(@RequestBody @Valid TradesmanRequest request) {
-            CreateTradesman createUser = new CreateTradesman(request.lastname, request.firstname, new Date(String.valueOf(request.birthdate)), new Location(request.location.address, request.location.city)  );
+            CreateTradesman createUser = new CreateTradesman(request.lastname, request.firstname, new Date(String.valueOf(request.birthdate)),false,  new Location(request.location.address, request.location.city)  );
             UserId userId = commandBus.send(createUser);
             return ResponseEntity.created(URI.create("/tradesman/create" + userId.getValue())).build();
         }

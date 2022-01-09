@@ -20,7 +20,7 @@ public final class CreateTradesman implements Command {
 
     public CreateTradesman(String firstName, String lastName,
                             Date birthdate, boolean validate,
-                            Location address, List<Project> projects) {
+                            Location address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;

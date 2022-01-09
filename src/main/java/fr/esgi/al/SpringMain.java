@@ -22,6 +22,5 @@ public class SpringMain {
                     new Date(1997, 9, 22), false,
                     new Location("7 rue de la paix", "PARIS"), new ArrayList<>(), new ArrayList<>(), 0, "azerty");
         final UserId userId = userCommandHandler.handle(createUser);
-
     }
 }
